@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="MobiMarket" Class="BounsLinqDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Function Name="dbo.BonusRules_DeleteById" Method="BonusRules_DeleteById">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.GiftItems_UpdatePoints" Method="GiftItems_UpdatePoints">
+    <Parameter Name="GiftID" Parameter="giftID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="GiftPoints" Parameter="giftPoints" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.BonusPointsTransactions_Insert" Method="BonusPointsTransactions_Insert">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="DebitAmount" Parameter="debitAmount" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CreditAmount" Parameter="creditAmount" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Notes" Parameter="notes" Type="System.String" DbType="NVarChar(200)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.CustomerPurchases_SelectByCustomerID" Method="CustomerPurchases_SelectByCustomerID">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="CustomerPurchases_SelectByCustomerIDResult">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="PurchaseAmount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DocumentNumber" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="DocumentDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Customers_SelectCustomerPoints" Method="Customers_SelectCustomerPoints">
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="Customers_SelectCustomerPointsResult">
+      <Column Name="Bonuspoints" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.Customers_SelectByClientID" Method="Customers_SelectByClientID">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="Customers_SelectByClientIDResult">
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="BirthDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CityID" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="MaritalStatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Job" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Bonuspoints" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CompletedData" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.GiftItems_GetAvailableGifts" Method="GiftItems_GetAvailableGifts">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="Points" Parameter="points" Type="System.Int32" DbType="Int" />
+    <ElementType Name="GiftItems_GetAvailableGiftsResult">
+      <Column Name="GiftID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="GiftCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="GiftPoints" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="GiftImage" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.BonusRules_Insert" Method="BonusRules_Insert">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="RuleTypeID" Parameter="ruleTypeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Points" Parameter="points" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Active" Parameter="active" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Value1" Parameter="value1" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Value2" Parameter="value2" Type="System.String" DbType="NVarChar(200)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.BonusRules_SelectByClientID" Method="BonusRules_SelectByClientID">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="BonusRules_SelectByClientIDResult">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="RuleTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Points" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Value1" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Value2" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.BonusRules_SelectById" Method="BonusRules_SelectById">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="BonusRules_SelectByIdResult">
+      <Column Name="ID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="RuleTypeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Points" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Value1" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Value2" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.BonusRules_UpdateById" Method="BonusRules_UpdateById">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="RuleTypeID" Parameter="ruleTypeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Points" Parameter="points" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="Value1" Parameter="value1" Type="System.String" DbType="NVarChar(200)" />
+    <Parameter Name="Value2" Parameter="value2" Type="System.String" DbType="NVarChar(200)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.BonusRules_UpdateStatus" Method="BonusRules_UpdateStatus">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.deliveredGift_InsertByBonus" Method="deliveredGift_InsertByBonus">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="CustomerID" Parameter="customerID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="WinningDate" Parameter="winningDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="GiftStatus" Parameter="giftStatus" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="BrancheID" Parameter="brancheID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="GiftID" Parameter="giftID" Type="System.Int64" DbType="BigInt" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.BonusPointsTransactions_SelectCustomersTotalPoints" Method="BonusPointsTransactions_SelectCustomersTotalPoints">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="MaritalStatus" Parameter="maritalStatus" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Gender" Parameter="gender" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Job" Parameter="job" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="City" Parameter="city" Type="System.Int64" DbType="BigInt" />
+    <ElementType Name="BonusPointsTransactions_SelectCustomersTotalPointsResult">
+      <Column Name="Bonuspoints" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.BonusPointsTransactions_SelectCustomersPoints" Method="BonusPointsTransactions_SelectCustomersPoints">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="MaritalStatus" Parameter="maritalStatus" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Gender" Parameter="gender" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Phone" Parameter="phone" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Job" Parameter="job" Type="System.String" DbType="NVarChar(100)" />
+    <Parameter Name="City" Parameter="city" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="FromDate" Parameter="fromDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ToDate" Parameter="toDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="BonusPointsTransactions_SelectCustomersPointsResult">
+      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(6) NOT NULL" CanBeNull="false" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DebitAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreditAmount" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TransactionsDate" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CustomerID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="ClientID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Column Name="TransactionsID" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.BounsGifts_Given_To_Customers_In_Period" Method="BounsGifts_Given_To_Customers_In_Period">
+    <Parameter Name="ClientID" Parameter="clientID" Type="System.Int64" DbType="BigInt" />
+    <Parameter Name="FromDate" Parameter="fromDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="ToDate" Parameter="toDate" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="BounsGifts_Given_To_Customers_In_PeriodResult">
+      <Column Name="WinningDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DeliveredDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DeliveryCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Contest_Compain" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="GiftCost" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>
